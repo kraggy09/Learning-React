@@ -1,0 +1,107 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.navbar {
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar > .nav-items {
+  display: flex;
+  list-style-type: none;
+}
+
+.navbar > .logo {
+  font-size: 30px;
+  margin: 10px;
+}
+
+.nav-items > .link {
+  padding: 5px 15px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 15px;
+  margin: 0px 15px;
+}
+
+.nav-items > .link:hover {
+  background-color: rgb(80, 80, 177);
+  cursor: pointer;
+  color: white;
+}
+
+.restraunt-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  margin: 5px;
+  width: 200px;
+  margin-right: 35px;
+}
+.card > img {
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 95%;
+}
+.card:hover {
+  border: 1px solid black;
+}
+.card > p {
+  font-size: 1.2rem;
+  padding: 0px 25px;
+}
+
+/*Search Bar*/
+.search-container > .search-input {
+  margin: 5px 0px 5px 10px;
+  height: 25px;
+  border-radius: 5px;
+  width: 85%;
+}
+
+.search-container > .search-btn {
+  height: 30px;
+  position: absolute;
+  margin-top: 5px;
+  margin: right 25px;
+  background-color: lightblue;
+  color: white;
+  border: white;
+  border-radius: 5px;
+}
+
+.shimmer-card {
+  margin: 5px;
+  height: 400px;
+  width: 200px;
+  margin-right: 35px;
+}
+.shimmer-card > .shimmer-img {
+  margin-top: 25px;
+  margin-left: 5px;
+  width: 95%;
+  height: 30%;
+  background-color: #827f7f;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.shimmer-card > .shimmer-para {
+  background-color: #827f7f;
+  border-radius: 6px;
+  margin-left: 15px;
+  height: 5%;
+  width: 75%;
+  margin-bottom: 13px;
+}
+
+.shimmer-cards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
