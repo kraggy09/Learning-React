@@ -105,3 +105,8 @@ body {
   flex-wrap: wrap;
   flex-direction: row;
 }
+
+.cards-link {
+  text-decoration: none;
+  color: black;
+}

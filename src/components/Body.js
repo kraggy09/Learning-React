@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
 
@@ -21,7 +22,7 @@ const Body = () => {
   }, []);
   async function getAPI() {
     let data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5305529&lng=88.3069213&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
     console.log(json);
@@ -58,7 +59,15 @@ const Body = () => {
           if (filterRestaurant.length == 0) {
             return <h1>No restaurant found</h1>;
           }
-          return <Card restaurant={restaurant} key={restaurant.data.id} />;
+          return (
+            <Link
+              to={"/restaurant/" + restaurant.data.id}
+              className="cards-link"
+              key={restaurant.data.id}
+            >
+              <Card restaurant={restaurant} />
+            </Link>
+          );
         })}
       </div>
     </>
