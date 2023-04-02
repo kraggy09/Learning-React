@@ -1,5 +1,4 @@
-import Header from "./Header";
-
+import { Outlet } from "react-router-dom";
 const AboutUs = () => {
   return (
     <div>
@@ -7,6 +6,7 @@ const AboutUs = () => {
       <p>
         This is a dummy text to check whether the app is working fine or not
       </p>
+      <Outlet />
     </div>
   );
 };

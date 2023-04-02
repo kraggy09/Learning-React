@@ -41,15 +41,20 @@ body {
 .card {
   margin: 5px;
   width: 200px;
+  height: auto;
   margin-right: 35px;
+  border-radius: 50px;
+  background: #e0e0e0;
+  box-shadow: 32px 32px 63px #bebebe, -32px -32px 63px #ffffff;
 }
 .card > img {
   margin-top: 5px;
   margin-left: 5px;
+  border-radius: 12px;
   width: 95%;
 }
 .card:hover {
-  border: 1px solid black;
+  transform: translate(1.2);
 }
 .card > p {
   font-size: 1.2rem;
