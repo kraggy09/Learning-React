@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
 import { filterData } from "../utils/Utils";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
   const [restaurant, setRestaurant] = useState([]);
-  const [searchText, setSearchText] = useState();
+  const [searchText, setSearchText] = useState("");
   const [filterRestaurant, setFilterRestaurant] = useState([]);
-  console.log("REndered from body");
+  //console.log("REndered from body");
   useEffect(() => {
     //API call
     getAPI();
@@ -23,14 +24,19 @@ const Body = () => {
     setRestaurant(json?.data?.cards[2]?.data?.data?.cards);
     setFilterRestaurant(json?.data?.cards[2]?.data?.data?.cards);
   }
+
+  const online = useOnline();
+  if (!online) {
+    return <h1>Please Check your internet connextion</h1>;
+  }
   return restaurant.length == 0 ? (
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
+      <div className="p-2 m-2 stroke-indigo-50">
         <input
           type="text"
-          className="search-input"
+          className="w-5/6 h-10 shadow-sm border border-slate-300 rounded-md"
           placeholder="Search"
           value={searchText}
           onChange={(e) => {
@@ -38,7 +44,7 @@ const Body = () => {
           }}
         />
         <button
-          className="search-btn"
+          className="ml-5 bg-yellow-300 hover:bg-lime-300 rounded-xl p-2"
           onClick={() => {
             const data = filterData(searchText, restaurant);
             setFilterRestaurant(data);
@@ -47,21 +53,22 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="restraunt-list">
-        {filterRestaurant.map((restaurant) => {
-          if (filterRestaurant.length == 0) {
-            return <h1>No restaurant found</h1>;
-          }
-          return (
-            <Link
-              to={"/restaurant/" + restaurant.data.id}
-              className="cards-link"
-              key={restaurant.data.id}
-            >
-              <Card restaurant={restaurant} />
-            </Link>
-          );
-        })}
+      <div className="flex flex-wrap">
+        {filterRestaurant.length > 0 ? (
+          filterRestaurant.map((restaurant) => {
+            return (
+              <Link
+                to={"/restaurant/" + restaurant.data.id}
+                className="cards-link"
+                key={restaurant.data.id}
+              >
+                <Card restaurant={restaurant} />
+              </Link>
+            );
+          })
+        ) : (
+          <h1>No restaurant</h1>
+        )}
       </div>
     </>
   );
