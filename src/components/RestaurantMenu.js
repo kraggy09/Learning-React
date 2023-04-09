@@ -13,31 +13,24 @@ const RestaurantMenu = () => {
   return !restaurant ? (
     <Shimmer />
   ) : (
-    <div>
-      <h1>{restaurant[0]?.card?.card?.info?.name}</h1>
-      <img
-        src={imageWeb + restaurant[0]?.card?.card?.info?.cloudinaryImageId}
-      />
-      <h2>{restaurant[0]?.card?.card?.info?.id}</h2>
-      <h3>{restaurant[0]?.card?.card?.info?.avgRating + " Stars"}</h3>
-
-      {/*restaurant[2].groupedCard.cardGroupMap.REGULAR.cards.map((item) => {
-        return !item.card
-          ? null
-          : item.card.itemCards.map((item) => {
-              return <h1>{item.card.info.name}</h1>;
+    <div className="flex justify-between w-[100vw]">
+      <div>
+        <h1>{restaurant[0]?.card?.card?.info?.name}</h1>
+        <img
+          src={imageWeb + restaurant[0]?.card?.card?.info?.cloudinaryImageId}
+        />
+        <h2>{restaurant[0]?.card?.card?.info?.id}</h2>
+        <h3>{restaurant[0]?.card?.card?.info?.avgRating + " Stars"}</h3>
+      </div>
+      <div className="pl-[20%]">
+        {restaurant[3]?.groupedCard?.cardGroupMap.REGULAR.cards.map((item) => {
+          if (item.card.card.itemCards) {
+            return item.card.card.itemCards.map((food) => {
+              return <p key={food.card.info.id}>{food.card.info.name}</p>;
             });
-      })*/}
-      {/*restaurant[2].groupedCard.cardGroupMap.REGULAR.cards.map((item) => {
-        if (item.card && item.card.itemCards) {
-          return item.card.itemCards.map((man) => {
-            console.log("hello");
-
-            return <h1 key={man.card.info.id}>{man.card.info.name}</h1>;
-          });
-        }
-        return null;
-      })*/}
+          }
+        })}
+      </div>
     </div>
   );
 };
