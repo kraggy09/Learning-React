@@ -28,7 +28,16 @@ const RestaurantMenu = () => {
               return <h1>{item.card.info.name}</h1>;
             });
       })*/}
-      {}
+      {/*restaurant[2].groupedCard.cardGroupMap.REGULAR.cards.map((item) => {
+        if (item.card && item.card.itemCards) {
+          return item.card.itemCards.map((man) => {
+            console.log("hello");
+
+            return <h1 key={man.card.info.id}>{man.card.info.name}</h1>;
+          });
+        }
+        return null;
+      })*/}
     </div>
   );
 };
