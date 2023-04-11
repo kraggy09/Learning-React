@@ -22,8 +22,8 @@ const RestaurantMenu = () => {
         <h2>{restaurant[0]?.card?.card?.info?.id}</h2>
         <h3>{restaurant[0]?.card?.card?.info?.avgRating + " Stars"}</h3>
       </div>
-      <div className="pl-[20%]">
-        {restaurant[3]?.groupedCard?.cardGroupMap.REGULAR.cards.map((item) => {
+      <div className="pr-[20%]">
+        {restaurant[2]?.groupedCard?.cardGroupMap.REGULAR.cards.map((item) => {
           if (item.card.card.itemCards) {
             return item.card.card.itemCards.map((food) => {
               return <p key={food.card.info.id}>{food.card.info.name}</p>;

@@ -1,4 +1,5 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState, useContext } from "react";
+import UserContext from "./utils/UserContext";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -13,12 +14,20 @@ const Instamart = lazy(() => import("./components/Instamart"));
 const About = lazy(() => import("./components/AboutUs"));
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    user: {
+      name: "Kaif",
+      email: "kaifshaikh2013.sk@gmail.com",
+    },
+  });
+  const displayUser = useContext(UserContext);
   return (
-    <React.Fragment>
+    <UserContext.Provider value={{ user: user }}>
       <Header />
+      {displayUser.user.name}
       <Outlet />
       <Footer />
-    </React.Fragment>
+    </UserContext.Provider>
   );
 };
 
