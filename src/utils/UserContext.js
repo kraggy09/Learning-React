@@ -4,8 +4,10 @@ Context works as a global variable. We can use it any where in the App. Or we ca
 */
 const UserContext = createContext({
   user: {
-    name: "Kaif",
-    email: "kaifshaikh2013.sk@gmail.com",
+    name: "Dummy Name",
+    email: "dummy@gmail.com",
   },
 });
+/*Used to get the unique name for the Context which is helpful while debugging */
+UserContext.displayName = "UserContext";
 export default UserContext;

@@ -20,11 +20,9 @@ const AppLayout = () => {
       email: "kaifshaikh2013.sk@gmail.com",
     },
   });
-  const displayUser = useContext(UserContext);
   return (
-    <UserContext.Provider value={{ user: user }}>
+    <UserContext.Provider value={user}>
       <Header />
-      {displayUser.user.name}
       <Outlet />
       <Footer />
     </UserContext.Provider>
