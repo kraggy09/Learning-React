@@ -19,21 +19,23 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5305529&lng=88.3069213&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(json);
-    console.log(json?.data?.cards[2]?.data?.data?.cards);
+    {
+      /*console.log(json);
+    console.log(json?.data?.cards[2]?.data?.data?.cards);*/
+    }
     setRestaurant(json?.data?.cards[2]?.data?.data?.cards);
     setFilterRestaurant(json?.data?.cards[2]?.data?.data?.cards);
   }
 
   const online = useOnline();
   if (!online) {
-    return <h1>Please Check your internet connextion</h1>;
+    return <h1>Please Check your internet connection</h1>;
   }
   return restaurant.length == 0 ? (
     <Shimmer />
   ) : (
     <>
-      <div className="p-2 m-2 stroke-indigo-50">
+      <div className="px-2 ml-2 my-2 py-2 stroke-indigo-50">
         <input
           type="text"
           className="w-5/6 h-10 shadow-sm border border-slate-300 rounded-md"
@@ -41,14 +43,14 @@ const Body = () => {
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
+            console.log(searchText);
+            const data = filterData(searchText, restaurant);
+            setFilterRestaurant(data);
           }}
         />
         <button
           className="ml-5 bg-yellow-300 hover:bg-lime-300 rounded-xl p-2"
-          onClick={() => {
-            const data = filterData(searchText, restaurant);
-            setFilterRestaurant(data);
-          }}
+          onClick={() => {}}
         >
           Search
         </button>
@@ -67,7 +69,11 @@ const Body = () => {
             );
           })
         ) : (
-          <h1>No restaurant</h1>
+          <div className="border-2 border-yellow-500 rounded-[12px] mx-auto w-5/6 p-5  my-36">
+            <h1 className="text-2xl font-bold flex justify-center   text-red-500">
+              No restaurant found
+            </h1>
+          </div>
         )}
       </div>
     </>

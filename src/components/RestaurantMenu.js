@@ -4,6 +4,7 @@ import { imageWeb } from "../config";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
 import useRestaurant from "../utils/useRestaurant";
+import MenuCard from "./MenuCard";
 
 const RestaurantMenu = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const RestaurantMenu = () => {
   return !restaurant ? (
     <Shimmer />
   ) : (
-    <div className="flex justify-between w-[100vw]">
+    <div className="">
       <div>
         <h1>{restaurant[0]?.card?.card?.info?.name}</h1>
         <img
@@ -22,11 +23,11 @@ const RestaurantMenu = () => {
         <h2>{restaurant[0]?.card?.card?.info?.id}</h2>
         <h3>{restaurant[0]?.card?.card?.info?.avgRating + " Stars"}</h3>
       </div>
-      <div className="pr-[20%]">
+      <div className="">
         {restaurant[2]?.groupedCard?.cardGroupMap.REGULAR.cards.map((item) => {
           if (item.card.card.itemCards) {
             return item.card.card.itemCards.map((food) => {
-              return <p key={food.card.info.id}>{food.card.info.name}</p>;
+              return <MenuCard key={food.card.info.id} menu={food} />;
             });
           }
         })}
